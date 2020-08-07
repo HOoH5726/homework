@@ -29,15 +29,15 @@ def save_order():
         'phone': phone_receive
     }
 
-    db.homework.insert_one(doc)
+    db.orders.insert_one(doc)
 
-    return jsonify({'result': 'success'})
+    return jsonify({'result': 'success', 'msg': '주문이 완료되었습니다!'})
 
 
 # 주문 목록보기(Read) API
 @app.route('/order', methods=['GET'])
 def view_orders():
-    orders = list(db.homework.find({}, {'_id': 0}))
+    orders = list(db.orders.find({}, {'_id': 0}))
     return jsonify({'result': 'success', 'orders': orders})
 
 
